@@ -79,19 +79,22 @@ Each target platform has different prerequisites.
 
 ## *1.	Register an application with Azure AD*
 
-Note: this step is optional. The tutorial provided pre-provisioned values that will allow you to see the sample in action without doing any provisioning in your own tenant. However it is recommended that you do perform this step and become familiar with the process, as it will be required when you will create your own applications.
+Note: this __step is optional__. The tutorial provided pre-provisioned values that will allow you to see the sample in action without doing any provisioning in your own tenant. However it is recommended that you do perform this step and become familiar with the process, as it will be required when you will create your own applications.
 
 Azure AD will only issue tokens to known applications. Before you can use Azure AD from your app, you need to create an entry for it in your tenant.  To register a new application in your tenant,
 
-- Sign into the Azure Management Portal
-- In the left hand nav, click on Active Directory
-- Select the tenant where you wish to register the application
-- Click the Applications tab, and click add in the bottom drawer.
-- Follow the prompts and create a new “Native Client Application”
-    - The name of the application will describe your application to end-users
-    -	The “Redirect URI” is the URI used to return tokens to your app. Enter `http://MyDirectorySearcherApp`.
+-	Sign into the [Azure Management Portal](https://manage.windowsazure.com)
+-	In the left hand nav, click on **Active Directory**
+-	Select the tenant where you wish to register the application.
+-	Click the **Applications** tab, and click **Add** in the bottom drawer.
+-	Follow the prompts and create a new **Native Client Application** (despite the fact that Cordova apps are HTML based, we are creating native client application here so `Native Client Application` option must be selected; otherwise, the application won't work).
+    -	The **Name** of the application will describe your application to end-users
+    -	The **Redirect URI** is the URI used to return tokens to your app. Enter `http://MyDirectorySearcherApp`.
 
-Once you’ve completed registration, AAD will assign your app a unique client identifier.  You’ll need this value in the next sections: you can find it in the Configure tab of the newly created app.
+Once you’ve completed registration, AAD will assign your app a unique client identifier.  You’ll need this value in the next sections: you can find it in the **Configure** tab of the newly created app.
+
+In order to run `DirSearchClient Sample`, grant the newly created app permission to query the _Azure AD Graph API_:
+-	In **Configure** tab, locate the "Permissions to Other Applications" section.  For the "Azure Active Directory" application, add the **Access the directory as the signed-in user** permission under **Delegated Permissions**.  This will enable your application to query the Graph API for users.
 
 ## *2. Clone the repositories required for the tutorial*
 
